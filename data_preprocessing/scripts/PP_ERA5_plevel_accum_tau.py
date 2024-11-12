@@ -90,4 +90,6 @@ ERA5_6h_save = ERA5_6h.sel(time=slice(time_start_save, time_end))
 ERA5_6h_save = ERA5_6h_save.chunk(conf['ARCO']['chunk_size_3d'])
 
 save_name = base_dir + conf['ARCO']['prefix'] + '_surf_stress_{}.zarr'.format(year)
+print(f'Save to {save_name}')
 ERA5_6h_save.to_zarr(save_name, mode="w", consolidated=True, compute=True, encoding=dict_encoding)
+print('... done')
